@@ -1,5 +1,3 @@
-# app/api/auth.py
-
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from app.db.session import engine

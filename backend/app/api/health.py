@@ -1,5 +1,3 @@
-# app/api/health.py
-
 from fastapi import APIRouter
 from sqlalchemy import text
 from app.db.session import engine
