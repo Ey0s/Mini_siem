@@ -1,11 +1,13 @@
 from fastapi import FastAPI
+from app.api.health import router as health_router
+from app.db.session import engine
+from app.db.base import Base
+from app.models import user
+from app.api.auth import router as auth_router
 
-app = FastAPI(
-    title="SecureSight SIEM",
-    description="ML-Based Security Information and Event Management System",
-    version="0.1.0"
-)
+app = FastAPI(title="SecureSight API")
 
-@app.get("/")
-def root():
-    return {"message": "SecureSight backend is running"}
+Base.metadata.create_all(bind=engine)
+
+app.include_router(health_router)
+app.include_router(auth_router)
